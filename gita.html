@@ -1,0 +1,51 @@
+
+<html>
+<head>
+	<title>Naslov neki</title>
+	<script type="text/javascript">
+		
+		function PrijelazMisa() //funkcija koju će mousover pozvati kada korinsik pređe s mišem preko imena i prezimena
+		{
+			var imeBoje = prompt("Unesi naziv boje", ""); //varijabla u koju spremamo tekst koji korinisk upisuje (u ovom slučaju upisuje ime boje koje želi)
+
+			var duzinaNiza = parseInt(prompt("Unesi koliko brojeva želiš upisati", "")); //varijabla u koju spremamo broji koji određuje veličinu niza 
+
+			var nizBrojeva = new Array(); //stvaranje varijable koja će spremati niz brojeva koje će korisnik upisivati
+
+			for (var i = 1; i <= duzinaNiza; i++) //petlja koja će tražiti upis onoliko brojeva koliko je korisnik upisao da želi
+			{
+				nizBrojeva[i] = parseInt(prompt("Upiši " + i + ". broj","")); //korisnik upisuje broj u svaki elemnt niza...kroz niz prolazimo pomoću varijable "i" koja se nakon svake iteracije povećava za 1
+				
+			}
+
+			var zbroj = 0; //varijabla u koju ćemo spremati rezultat iz for petlje ispod
+
+			for (var i = 1; i <= duzinaNiza; i++) //petlja koja prolazi kroz svaki element varijable duzinaNiza 
+			{
+				zbroj = zbroj + Math.pow(nizBrojeva[i],2); // vrijednost iz elementa niza koji se nalazi na broju "i" spremamo u varijablu "zbroj"
+			}
+
+			var KS = Math.sqrt(zbroj / duzinaNiza); //računao korijen od varijable zbroja koju podjelimo s dužinom niza
+
+			if (KS > 50) //ako je rezultat veći od 50 ispisujemo u alert-u sa žutom pozadinom
+			{
+				document.body.style.backgroundColor = "yellow"; // postavljamo žutu pozadinu 
+				alert(KS); //ispisujemo rezultat u popup-u
+			}
+			else // ako je rezultat manji ili jednak od 50 onda ispisujemo rezultat na stranici sa žutom pozadinom i bojom teksta koju je korisnik unesao na početku
+			{
+				
+				document.writeln(KS); //ispisujemo rezultat na stranici
+				document.body.style.backgroundColor = "yellow"; // postavljamo pozadinu stranice u žutu boju
+				document.body.style.color = imeBoje; // postavljamo boju teksta koju smo spremili u varijablu "imeBoje" u koju je korinik unesao željenu boju
+				
+			}
+		}
+
+	</script>
+</head>
+
+<body>
+	<a href="#" onmouseover="PrijelazMisa()">Ime i prezime</a>
+</body>
+</html>
